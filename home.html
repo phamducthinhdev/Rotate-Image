@@ -127,7 +127,7 @@
   <script src="{% static 'js//xebus-service.1.0.0.js' %}"></script>
   <style type="text/css">
 
-	.loading_arrow {
+  .loading_arrow {
     width: 32px;
     margin-top: 13px;
     margin-left: 42%;
@@ -136,41 +136,41 @@
     -o-animation: rotation .75s infinite linear;
     animation: rotation .75s infinite linear;
 }
-	body {
-	    background-color:#000;
-	}
-	@-webkit-keyframes rotation {
-	    from {
-	        -webkit-transform: rotate(0deg);
-	    }
-	    to {
-	        -webkit-transform: rotate(359deg);
-	    }
-	}
-	@-moz-keyframes rotation {
-	    from {
-	        -moz-transform: rotate(0deg);
-	    }
-	    to {
-	        -moz-transform: rotate(359deg);
-	    }
-	}
-	@-o-keyframes rotation {
-	    from {
-	        -o-transform: rotate(0deg);
-	    }
-	    to {
-	        -o-transform: rotate(359deg);
-	    }
-	}
-	@keyframes rotation {
-	    from {
-	        transform: rotate(0deg);
-	    }
-	    to {
-	        transform: rotate(359deg);
-	    }
-	}
+  body {
+      background-color:#000;
+  }
+  @-webkit-keyframes rotation {
+      from {
+          -webkit-transform: rotate(0deg);
+      }
+      to {
+          -webkit-transform: rotate(359deg);
+      }
+  }
+  @-moz-keyframes rotation {
+      from {
+          -moz-transform: rotate(0deg);
+      }
+      to {
+          -moz-transform: rotate(359deg);
+      }
+  }
+  @-o-keyframes rotation {
+      from {
+          -o-transform: rotate(0deg);
+      }
+      to {
+          -o-transform: rotate(359deg);
+      }
+  }
+  @keyframes rotation {
+      from {
+          transform: rotate(0deg);
+      }
+      to {
+          transform: rotate(359deg);
+      }
+  }
 
 </style>
 </head>
@@ -434,7 +434,7 @@
       <i class="fas fa-exclamation-triangle text-danger email-check email-error"></i>
       <i class="fa fa-check text-success email-check email-success"></i>
 
-      <span class="form-join-icon" id="location-icon"></span>
+      <span class="form-join-icon" id="location-icon"><img class="loading_arrow" src="{% static 'img/ic_location_compass.svg' %}" /></span>
       <input type="text" class="form-control" id="location" placeholder="In which city does your kid live?"
         autocomplete="off">
       <div class="loader city-load"></div>
@@ -462,11 +462,7 @@
   </div>
 
   <footer class="footer__site">
-      <div id="primaryContainer">
-      <a class="btn_join_small" href="#" style="float: left;">
-          <img class="loading_arrow" src="{% static 'img/ic_location_compass.svg' %}" />
-      </a>
-  </div>
+
   </footer>
 
   <div class="place__container left">
