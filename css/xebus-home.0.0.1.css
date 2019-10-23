@@ -1,0 +1,1473 @@
+/**
+ * Copyright (C) 2019 Majormode.  All rights reserved.
+ *
+ * This software is the confidential and proprietary information of
+ * Majormode or one of its subsidiaries.  You shall not disclose this
+ * confidential information and shall use it only in accordance with the
+ * terms of the license agreement or other applicable agreement you
+ * entered into with Majormode.
+ *
+ * MAJORMODE MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY
+ * OF THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+ * PURPOSE, OR NON-INFRINGEMENT.  MAJORMODE SHALL NOT BE LIABLE FOR ANY
+ * LOSSES OR DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING
+ * OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+ */
+
+
+/*----------------------------------------------
+Style for home page layout in structure:
+- Frame name
+- Style common
+- Media queries
+- Style header
+- Style header dropdown menu
+- Style map container
+- Style kid container
+- Style avatar container
+- Style footer
+- Style form registration
+- Style for place and school container item
+- Style for loading and checking icons
+- Icon background url
+- Style modal form
+- Style kid registration form
+- Style guardian container
+- Override style intl-tel-input
+- Override style of switcher
+----------------------------------------------*/
+
+
+/*-----------------------------------------------
+Frame name: animation used in this file
+-----------------------------------------------*/
+/*CSS Animation*/
+
+@-webkit-keyframes rotating_animation {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes rotating_compass_animation {
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes rotating_compass_animation {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating_animation {
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes animate_rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@-moz-keyframes animate_rotation {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+  }
+}
+
+@keyframes animate_rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.animate--rotate{
+  -webkit-animation: rotating_animation 3s infinite linear;
+  animation: rotating_animation 3s infinite linear;
+}
+
+.check_location .btn_check_location{
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 101;
+  width: 30px;
+  height: 30px;
+  background: url("/static/img/ic_location_compass.svg") no-repeat center center;
+  cursor: pointer;
+  outline: none;
+  margin-top: -15px;
+}
+
+/*Location*/
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/*-----------------------------------------------
+Style Common: general style, include variables 
+and styles used in multiple element.
+-----------------------------------------------*/
+:root {
+    --form-join-height: 40px;
+    --main-color: #202020;
+    --error-color: #c64031;
+    --not-allow-color: #bc413d;
+    --allow-color: #74b356;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none !important;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-column {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.hide {
+    display: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.make-hover:hover {
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+h4 {
+    height: 25px;
+}
+
+.focus {
+    font-size: 12px !important;
+    top: -20px !important;
+}
+
+.focus-color {
+    color: #007BFF !important;
+}
+
+.label-high-pos {
+    font-size: 12px !important;
+    top: -20px !important;
+    color: #007BFF !important;
+}
+
+
+/*----------------------------------------------
+Media Queries
+----------------------------------------------*/
+@media (max-width: 890px) {
+    .form__container {
+        width: 100% !important;
+        height: 160px !important;
+        bottom: 0 !important;
+    }
+
+    .btn-danger {
+        width: 100% !important;
+        height: 40px !important;
+    }
+
+    #email {
+        width: calc(100% - 40px) !important;
+    }
+
+    #location {
+        width: calc(100% - 40px) !important;
+    }
+
+    #school {
+        width: calc(100% - 40px) !important;
+    }
+
+    #map__container {
+        height: calc(100% - 50px - 160px) !important;
+    }
+
+    .footer__site {
+        bottom: 0 !important;
+        height: 0 !important;
+    }
+
+    .form-control {
+        border-bottom: 1px solid black !important;
+    }
+
+    .form__icon {
+        border-bottom: 1px solid black !important;
+        border-right: 1px solid black !important;
+    }
+
+    .form-inline button {
+        width: 100% !important;
+    }
+
+    .loader,
+    .email-check {
+        right: 5px !important;
+        left: auto !important;
+    }
+
+    .fullname-load {
+        right: 20px !important;
+    }
+
+    .email-success {
+        bottom: 123px !important;
+    }
+
+    .email-error {
+        bottom: 125px !important;
+    }
+
+    .email-load {
+        bottom: 130px !important;
+    }
+
+    .city-load {
+        bottom: 90px !important;
+    }
+
+    .school-load {
+        bottom: 50px !important;
+    }
+
+    .place__container,
+    .school__container {
+        border-bottom: 1px solid black !important;
+    }
+
+    .placeList__container,
+    .schoolList__container {
+        width: 100% !important;
+        left: 0 !important;
+        bottom: 120px !important;
+    }
+
+    .schoolList__container {
+        bottom: 80px !important;
+        z-index: 1000 !important;
+    }
+
+    .selected-place__container,
+    .selected-school__container {
+        width: 100% !important;
+        left: 0 !important;
+        bottom: 80px !important;
+    }
+
+    .selected-school__container {
+        bottom: 40px !important;
+    }
+
+    .remove-kid-icon {
+        opacity: 1 !important;
+    }
+
+    .kid-avatar-container {
+        margin-top: 45px !important;
+    }
+
+    #kid-avatar {
+        width: 60px !important;
+        height: 60px !important;
+        background-size: 60px !important;
+    }
+
+    .kid-avatar-container .overlay {
+        display: none !important;
+    }
+
+    .guardian-container .form-group input {
+        font-size: 12px !important;
+    }
+
+    #date-container .date {
+        margin: auto 2px !important;
+    }
+}
+
+@media (max-width: 350px) {
+    .dropdown-menu {
+        right: 10px !important;
+    }
+
+    #date-container .date {
+        width: 16px !important;
+        margin: auto 1px !important;
+    }
+}
+
+
+/*-----------------------------------------------
+Style header: Style for header elements
+-----------------------------------------------*/
+.header__site {
+    height: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px 0 20px;
+}
+
+.header__site .logo {
+    height: 40px;
+    margin-top: 5px;
+    width: auto;
+}
+
+.header__site #login {
+    height: 40px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #262626;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+}
+
+
+/*----------------------------------------------
+Style header dropdown menu
+----------------------------------------------*/
+.dropdown .dropdown-menu {
+    position: fixed !important;
+    right: 25px !important;
+    left: auto !important;
+    top: 45px !important;
+}
+
+.dropdown .dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-toggle #user-photo {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px !important;
+    float: right;
+    background-size: 40px 40px;
+    display: none;
+}
+
+.dropdown .dropdown-menu:before,
+.dropdown .dropdown-menu::after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+}
+
+.dropdown .dropdown-menu:before {
+    top: -7px;
+    right: 9px;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-left: 7px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown .dropdown-menu:after {
+    top: -6px;
+    right: 10px;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    border-left: 6px solid transparent;
+}
+
+.dropdown-menu .navbar-login {
+    width: 300px;
+    height: 50px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.dropdown-menu .dropdown-content {
+    height: 65px;
+}
+
+.dropdown-menu .info-container {
+    color: var(--main-color);
+    position: relative;
+    padding: 0;
+}
+
+.dropdown-menu .divider {
+    width: 100%;
+    height: 1px;
+    border-top: 0.5px solid #C2C2C2;
+}
+
+.info-container #email-info {
+    max-width: 90%;
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.info-container #fullname {
+    width: 80%;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--main-color);
+    position: absolute;
+    left: 0;
+    top: -5px;
+    border: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.info-container #fullname:hover,
+.info-container #fullname:focus {
+    outline: none;
+}
+
+.info-container #fullname:focus {
+    border-bottom: 1px solid var(--main-color);
+}
+
+.info-container .fullname-load {
+    width: 20px;
+    height: 20px;
+    right: 20px;
+    top: -3px;
+}
+
+.info-container .fullname-check {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+}
+
+
+/*----------------------------------------------
+Style for map container
+----------------------------------------------*/
+#map__container {
+    height: calc(100% - 50px - 128px);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+/*----------------------------------------------
+Style kid container: Style for kid elements.
+----------------------------------------------*/
+.kid__container {
+    padding: 5px 10px;
+    max-width: 300px;
+    color: var(--main-color);
+}
+
+.kid__container:last-child {
+    display: none;
+}
+
+.kid__container:first-child {
+    display: flex;
+}
+
+.kid__container .remove-kid-icon,
+.kid__container .add-kid-icon {
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    margin-right: 5px;
+    border-radius: 50%;
+    line-height: 25px;
+    text-align: center;
+}
+
+.kid__container .remove-kid-icon:hover,
+.kid__container .add-kid-icon:hover {
+    background-color: rgba(153, 153, 153, 0.5);
+    cursor: pointer;
+}
+
+.kid__container .remove-kid-icon {
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.kid__container>h4 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.kid__container #kid-name {
+    margin: 0 10px;
+    font-size: 18px;
+    line-height: 20px;
+    width: calc(80% - 25px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.kid__container #kid-photo {
+    width: 25px;
+    height: 25px;
+    background-size: 25px 25px;
+    margin: 0;
+}
+
+
+/*----------------------------------------------
+Style avatar: style for avatar container 
+and its overlay
+----------------------------------------------*/
+.avatar-container {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.avatar-container .avatar {
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+    display: block;
+    margin: 0;
+}
+
+.avatar-container .avatar,
+.dropdown #user-photo,
+.kid__container #kid-photo,
+.kid-suggest-container .kid-item-photo {
+    border-radius: 50%;
+    margin: auto;
+    background-image: url("/static/img/default_avatar.png");
+    background-repeat: no-repeat;
+}
+
+.avatar-container .overlay-container {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#kid-form .frame-1 .overlay-container {
+    width: 80px;
+    height: 80px;
+}
+
+.overlay-container .overlay {
+    width: 50px;
+    height: 50px;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #3B3B3B;
+    top: 20px;
+    opacity: 0;
+    transition: 0.5s;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    pointer-events: none;
+}
+
+.avatar-container:hover .overlay {
+    opacity: 0.7;
+    top: 0;
+}
+
+
+/*----------------------------------------------
+Style Footer
+----------------------------------------------*/
+.footer__site {
+    height: 128px;
+    width: 100%;
+    float: left;
+    position: relative;
+    bottom: 40px;
+}
+
+
+/*-----------------------------------------------
+Style for Form Registration
+-----------------------------------------------*/
+.form__container {
+    height: var(--form-join-height);
+    width: 80%;
+    max-width: 1024px;
+    padding: 0;
+    margin: auto;
+    z-index: 995;
+    position: relative;
+    bottom: 60px;
+}
+
+.form-inline button[type='submit'] {
+    height: var(--form-join-height);
+    width: 80px;
+    border: none;
+    border-radius: 0;
+}
+
+.form-inline #email {
+    width: calc(30% - 64px);
+    padding-right: 25px;
+    box-sizing: border-box;
+}
+
+.form-inline #location,
+.form-inline #school {
+    width: calc(35% - 68px);
+}
+
+#location:focus,
+#email:focus {
+    box-shadow: none !important;
+    outline: none !important
+}
+
+
+/*----------------------------------------------
+Style for place and school container items
+----------------------------------------------*/
+.placeList__container,
+.schoolList__container {
+    width: calc(35% - 28px);
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    z-index: 900;
+}
+
+.placeList__container {
+    left: calc(30% - 24px);
+}
+
+.schoolList__container {
+    left: calc(65% - 52px);
+}
+
+.place__container,
+.school__container {
+    display: none;
+    height: var(--form-join-height);
+    width: 100%;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid #e6e6e6;
+    border-radius: 0;
+    background-color: white;
+}
+
+.selected-place__container,
+.selected-school__container {
+    height: var(--form-join-height);
+    width: calc(35% - 28px);
+    border-right: 1px solid #e6e6e6;
+    position: absolute;
+    z-index: 998;
+    visibility: hidden;
+}
+
+.selected-place__container {
+    left: calc(30% - 24px);
+}
+
+.selected-school__container {
+    left: calc(65% - 52px);
+}
+
+.place__container .city-info__container,
+.school__container .city-info__container{
+    height: var(--form-join-height);
+    margin-left: 40px;
+    padding-left: 10px;
+    position: relative;
+    bottom: 40px;
+}
+
+.place__container .city-name,
+.place__container .city__parent-name,
+.school__container .city-name,
+.school__container .city__parent-name{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.place__container .city-name,
+.school__container .city-name {
+    font-size: 14px;
+    font-weight: bold;
+    width: calc(100% - 50px);
+}
+
+.place__container .city__parent-name,
+.school__container .city__parent-name {
+    font-size: 11px;
+    width: calc(100% - 50px);
+}
+
+
+/*----------------------------------------------
+Style for loading and checking icons
+----------------------------------------------*/
+.loader {
+    display: none;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    border: 5px solid transparent;
+    border-top: 5px solid #6F6C6C;
+    border-radius: 50%;
+    animation: spin 0.5s linear infinite;
+}
+
+.email-load {
+    left: calc(30% - 54px);
+}
+
+.city-load {
+    left: calc(65% - 82px);
+}
+
+.school-load {
+    left: calc(100% - 110px);
+}
+
+.email-check {
+    display: none;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: calc(30% - 50px);
+    bottom: 3px;
+}
+
+.email-error {
+    bottom: 5px;
+}
+
+.email-icon {
+    background-image: url("/static/ico/baseline-email-24px.svg");
+}
+
+.remove-icon {
+    font-size: 20px;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    right: -1px;
+    visibility: hidden;
+}
+
+
+/*----------------------------------------------
+Background url of all icons
+----------------------------------------------*/
+.location-search {
+    background-image: url("/static/ico/baseline-location_searching-24px.svg");
+}
+
+.location-enable {
+    background-image: url("/static/ico/baseline-my_location-24px.svg");
+}
+
+.location-disable {
+    background-image: url("/static/ico/baseline-location_disabled-24px.svg");
+}
+
+.phone-icon {
+    background-image: url("/static/ico/phone.png");
+}
+
+.city-icon {
+    background-image: url("/static/ico/baseline-location_city-24px.svg");
+    border-bottom: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+}
+
+.school-icon {
+    background-image: url("/static/ico/school.svg");
+    border-bottom: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+}
+
+.btn-arrow.prev {
+    background-image: url("/static/ico/arrow_left.png");
+    visibility: hidden;
+}
+
+.btn-arrow.next {
+    background-image: url("/static/ico/arrow_right.png");
+}
+
+
+/*----------------------------------------------
+Style for modal form
+----------------------------------------------*/
+
+
+.modal {
+    position: absolute;
+    overflow: auto;
+    overflow-y: auto;
+    top: 30px;
+}
+
+.form-control {
+    border: none;
+    height: var(--form-join-height);
+    border-radius: 0;
+    border-right: 1px solid #e6e6e6;
+}
+
+.modal-header {
+    padding: 10px auto;
+}
+
+.modal-body .form-group {
+    position: relative;
+    margin-top: 15px;
+}
+
+
+.modal-body .form-group input {
+    width: 100%;
+    height: 30px;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #85c1e9;
+    outline: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+.modal-body .form-group label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 15px;
+    pointer-events: none;
+    transition: .3s;
+    /* font-weight: bold; */
+}
+
+.modal-body .form-group #forget {
+    position: absolute;
+    right: 5px;
+    bottom: -20px;
+    font-size: 12px;
+    color: #70757A;
+}
+
+.modal-body .form-group input:focus~label,
+.modal-body .form-group input:valid~label {
+    top: -20px;
+    left: 0;
+    color: #007bff;
+    font-size: 12px;
+}
+
+.form-icon {
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+    font-size: 14px;
+}
+
+.not-valid {
+    color: #D93025 !important;
+}
+
+.form-join-icon {
+    height: var(--form-join-height);
+    width: 40px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: 5px 5px;
+    border-right: 1px solid #e6e6e6;
+}
+
+.close-icon {
+    float: right;
+    position: relative;
+    bottom: 30px;
+    padding-right: 5px;
+    padding-top: 3px;
+}
+
+.form-join-icon:hover {
+    cursor: pointer;
+}
+
+#login-error-message,
+#date-error-message {
+    display: none;
+    color: red !important;
+}
+
+/*-----------------------------------------------
+Style for Kid Registration Form
+-----------------------------------------------*/
+#kidRegistrationModal .modal-content {
+    height: 80%;
+}
+
+#kidRegistrationModal .modal-header {
+    border-bottom: none;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+}
+
+#kid-form {
+    min-height: 620px;
+    position: relative;
+    transition: all 0.5s;
+    color: var(--main-color);
+}
+
+#kid-form fieldset {
+    width: 90%;
+    margin: 0 5%;
+    /* background: white; */
+    border: 0 none;
+    border-radius: 0px;
+    position: relative;
+    top: -10px;
+}
+
+#kid-form fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/* #kid-form .form-group {
+    margin-top:
+} */
+
+#kid-form .dots-container {
+    height: 20px;
+    position: absolute;
+    bottom: 40px;
+    justify-content: center
+}
+
+#kid-form .dot {
+    height: 10px;
+    width: 10px;
+    margin: auto 7px;
+    border-radius: 50%;
+    background-color: #c4c4c4;
+    transition: all 0.6s;
+}
+
+#kid-form .dot.selected {
+    background-color: #555555;
+}
+
+#kid-form label,
+#kid-form .frame-1 span {
+    font-size: 16px;
+    top: -28px;
+    color: #3675e0;
+    line-height: 19px;
+}
+
+#kid-form .kid-form-error {
+    font-size: 12px !important;
+    line-height: 14px !important;
+    color: var(--error-color) !important;
+    visibility: hidden;
+}
+
+#kid-form input {
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border: none;
+    border-bottom: 1px solid var(--main-color);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    letter-spacing: 0.5px;
+}
+
+#kid-form .frame-1 input {
+    margin-bottom: 0;
+}
+
+#kid-form input:focus,
+#kid-form textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+.btn-arrow {
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: none;
+    transition: all 0.1s;
+    background-size: 15px 15px;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+}
+
+.btn-arrow .arrow-icon {
+    width: 25px;
+    height: 25px;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border: none;
+}
+
+#kid-form .action-button {
+    width: 100px;
+    font-weight: bold;
+    border: 0 none;
+    position: absolute;
+    right: 8%;
+    bottom: 80px;
+    cursor: pointer;
+}
+
+/* #kid-form .frame-1 .form-group:nth-child(2) {
+    margin-top: 35px;
+} */
+
+#kid-form .frame-1 .overlay-container {
+    height: 80px;
+    width: 80px;
+}
+
+
+#form-kid-title {
+    color: var(--main-color);
+    text-align: left;
+    transition: all 0.6s;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+#kid-form .frame-1 .kid-avatar-container .avatar,
+#kid-form .frame-1 .kid-avatar-container .overlay {
+    width: 140px;
+    height: 140px;
+    background-size: 140px 140px;
+    font-size: 50px;
+}
+
+#kid-form .frame-1 .kid-avatar-container .avatar {
+    border: 1px solid #757575;
+    border-radius: 70px;
+}
+
+#kid-form .frame-1 .kid-info-container {
+    width: calc(100% - 140px);
+    padding-left: 25px;
+    box-sizing: border-box;
+}
+
+#kid-form .frame-1 #date-container {
+    height: 30px;
+    width: 100%;
+    margin: auto;
+    font-size: 15px;
+}
+
+#kid-form .frame-1 #date-container .date {
+    width: 24px;
+    height: 32px;
+    margin: auto 3px;
+    border: 1px solid #202020;
+    box-sizing: border-box;
+    border-radius: 4px;
+    text-align: center;
+}
+
+#kid-form .frame-1 #date-container .date-icon {
+    font-size: 12px;
+    line-height: 32px;
+    text-align: center;
+    margin: auto 1 px;
+}
+
+#kid-form .frame-2 textarea {
+    height: 24px;
+    width: 100%;
+    margin-top: 13px;
+    padding: auto 0;
+    font-size: 16px;
+    line-height: 19px;
+    border: none;
+    border-bottom: 1px solid var(--main-color);
+    resize: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#kid-form .frame-2 .kid-form-error,
+#kid-form .frame-3 .kid-form-error {
+    position: absolute;
+}
+
+#kid-form .frame-2 .map-instruction {
+    width: 531px;
+    height: 40px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #202020;
+}
+
+#kid-form .frame-2 #map-address-container {
+    min-height: 380px;
+    height: 80%;
+    position: relative;
+    bottom: 15px;
+}
+
+#kid-form .frame-3 .kid-form-error {
+    bottom: -20px;
+}
+
+#kid-form .frame-3 .form-group:first-child {
+    margin-bottom: 50px;
+}
+
+#kid-form .frame-3 .form-group:nth-child(2) {
+    margin-bottom: 30px;
+}
+
+#kid-form .frame-3 .switcher-container {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    line-height: 19px;
+    color: var(--main-color);
+}
+
+#kid-form .frame-3 .switcher-container label {
+    top: 0;
+}
+
+#kid-form .frame-3 .toggle-on,
+#kid-form .frame-3 .toggle-off {
+    top: auto;
+}
+
+#kid-form .frame-4 {
+    height: 500px;
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+#kid-form .frame-4 .guardian-container {
+    height: 170px;
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 9px;
+    padding: 20px 15px;
+    border: 1px solid var(--main-color);
+    justify-content: flex-end;
+    position: relative;
+}
+
+
+/*----------------------------------------------
+Style for guarian container item
+----------------------------------------------*/
+.guardian-container .form-group {
+    margin: 0 !important;
+    padding: 0;
+    position: relative;
+}
+
+.guardian-container .form-group .kid-form-error {
+    position: absolute;
+    bottom: -17px;
+}
+
+.guardian-container .form-group:nth-child(3) .kid-form-error {
+    left: 30px;
+}
+
+.guardian-container .form-group:nth-child(4) .kid-form-error {
+    left: 75px;
+}
+
+.guardian-container .form-group input {
+    width: calc(100% - 30px);
+    font-size: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.guardian-container .form-group:nth-child(3) input {
+    float: right;
+}
+
+.guardian-container .form-group label:nth-child(3) {
+    left: 30px;
+}
+
+/* .guardian-container .form-group input:focus~label,
+.guardian-container .form-group input:valid~label {
+    top: -20px !important;
+    font-size: 12px !important;
+} */
+
+/* .guardian-container .form-group input:focus~label:nth-child(3),
+.guardian-container .form-group input:valid~label:nth-child(3) {
+    left: 30px;
+} */
+
+.guardian-container .form-icon {
+    font-size: 14px;
+    height: 25px;
+    width: 25px;
+    background-size: 25px 25px;
+    float: left;
+    right: auto;
+    bottom: 0;
+}
+
+.guardian-container #guardian-role {
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid var(--main-color);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.guardian-container #guardian-role option {
+    padding-left: 0;
+}
+
+.guardian-container #guardian-phone {
+    left: 45px;
+    width: calc(100% - 75px);
+}
+
+.guardian-container #guardian-phone-label {
+    left: 75px;
+}
+
+
+/*----------------------------------------------
+Override style of intl-tel-input
+----------------------------------------------*/
+.iti--allow-dropdown {
+    left: 30px;
+}
+
+.iti__selected-flag {
+    padding: 0;
+    top: 5px;
+}
+
+
+/*----------------------------------------------
+Override style of switcher
+----------------------------------------------*/
+#kid-form .custom-switch .custom-switch-input+.custom-switch-btn {
+    background: var(--not-allow-color);
+}
+
+#kid-form .custom-switch .custom-switch-input:checked+.custom-switch-btn {
+    background: var(--allow-color);
+}
+
+/*
+Not cleaned
+*/
+#btn-add-guardian {
+    width: 100%;
+    height: 40px;
+    line-height: 19px;
+}
+
+.kid-form-suggest {
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    z-index: 999;
+    padding: 0;
+    box-shadow: 3px 3px 5px 1px #c4c4c4; 
+    display: none;
+}
+
+.kid-item {
+    width: 100%;
+    height: 32px;
+    padding: 0 5px;
+    border-bottom: 1px solid #c4c4c4;
+    justify-content: flex-start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: none;
+}
+
+.kid-item:hover {
+    background-color: #c4c4c4;
+}
+
+.kid-item .kid-item-photo {
+    width: 24px;
+    height: 24px;
+    background-size: 24px 24px;
+    margin: auto 0;
+    margin-right: 5px;
+    pointer-events: none;
+}
+
+.kid-item .kid-item-name {
+    height: 24px;
+    color: #666666 !important;
+    pointer-events: none;
+}
+
+#kid-form .btn-remove-item {
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-image: url("/static/ico/close_icon.png");
+    position: absolute;
+    right: 5px;
+    bottom: 26px;
+    border: none;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.frame-3 .kid-form-suggest {
+    bottom: -40px;
+}
+
+.frame-3 .form-group > .school__container {
+    position: absolute;
+    bottom: -10px;
+    pointer-events: none;
+}
+
+#btn-remove-school {
+    bottom: -7px !important;
+}
+
+.grade-suggest-container {
+    top: 30px;
+    list-style-type: none;
+}
+
+.guard-suggest-container {
+    width: calc(100% - 30px);
+}
+
+.grade-suggest-container > li{
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    border-top: none;
+    padding-left: 5px;
+}
+
+.guardian-container > .form-group > .kid-item {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    background-color: white;
+    border-bottom-color: var(--main-color);
+    width: calc(100% - 30px);
+    padding-left: 0;
+}
+
+#btn-remove-guard {
+    right: 30px !important;
+    bottom: 3px !important;
+}

@@ -125,54 +125,6 @@
   <script src="//cdnjs.majormode.com/ajax/libs/account-service.1.2.2.js"></script>
   <script src="//cdnjs.majormode.com/ajax/libs/area-service.1.1.2.js"></script>
   <script src="{% static 'js//xebus-service.1.0.0.js' %}"></script>
-  <style type="text/css">
-
-  .loading_arrow {
-    width: 32px;
-    margin-top: 13px;
-    margin-left: 42%;
-    -webkit-animation: rotation .75s infinite linear;
-    -moz-animation: rotation .75s infinite linear;
-    -o-animation: rotation .75s infinite linear;
-    animation: rotation .75s infinite linear;
-}
-  body {
-      background-color:#000;
-  }
-  @-webkit-keyframes rotation {
-      from {
-          -webkit-transform: rotate(0deg);
-      }
-      to {
-          -webkit-transform: rotate(359deg);
-      }
-  }
-  @-moz-keyframes rotation {
-      from {
-          -moz-transform: rotate(0deg);
-      }
-      to {
-          -moz-transform: rotate(359deg);
-      }
-  }
-  @-o-keyframes rotation {
-      from {
-          -o-transform: rotate(0deg);
-      }
-      to {
-          -o-transform: rotate(359deg);
-      }
-  }
-  @keyframes rotation {
-      from {
-          transform: rotate(0deg);
-      }
-      to {
-          transform: rotate(359deg);
-      }
-  }
-
-</style>
 </head>
 
 <body>
@@ -434,7 +386,7 @@
       <i class="fas fa-exclamation-triangle text-danger email-check email-error"></i>
       <i class="fa fa-check text-success email-check email-success"></i>
 
-      <span><a class="btn_join_small" href="#"><img class="loading_arrow" src="{% static 'img/ic_location_compass.svg' %}" /></a></span>
+      <button onclick="getLocation()" type="button" class="check_location animate--rotate" style="width: 26px;height: 26px;background-image: url({% static 'img/ic_location_compass.svg' %});"></button>
       <input type="text" class="form-control" id="location" placeholder="In which city does your kid live?"
         autocomplete="off">
       <div class="loader city-load"></div>
@@ -462,7 +414,11 @@
   </div>
 
   <footer class="footer__site">
-
+<!--      <div id="primaryContainer">-->
+<!--      <a class="btn_join_small" href="#" style="float: left;">-->
+<!--          <img class="loading_arrow" src="{% static 'img/ic_location_compass.svg' %}" />-->
+<!--      </a>-->
+  </div>
   </footer>
 
   <div class="place__container left">
@@ -525,6 +481,22 @@
           initIntlTelInput();
         }
       );
+  </script>
+  <script>
+
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+  }
   </script>
 </body>
 
