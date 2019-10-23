@@ -1,0 +1,535 @@
+{% load i18n %} {% load static %} {% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="utf-8" />
+  <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- Font Roboto Condensed -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+  <!--
+      JQuery: a fast, small, and feature-rich JavaScript library.  It makes
+      things like HTML document traversal and manipulation, event handling,
+      animation, and Ajax much simpler with an easy-to-use API that works
+      across a multitude of browsers.
+    -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+  <!--
+      Bootstrap: an open source toolkit for developing with HTML, CSS, and
+      JS.
+    -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+  <!-- Bootstrap Date Picker -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+  <!-- Bootstrap Toggle -->
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+
+  <!-- Toast library for displaying toast message -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+  <!-- Favicons for various platforms -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static '/ico/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static '/ico/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static '/ico/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static '/ico/site.webmanifest' %}">
+  <link rel="mask-icon" href="{% static '/ico/safari-pinned-tab.svg' %}" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Xebus</title>
+
+  <!--
+       Google Web Fonts
+       [https://developers.google.com/fonts/]
+    -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!--
+      Font Awesome: gives scalable vector icons that can instantly be
+      customized — size, color, drop shadow, and anything that can be done
+      with the power of CSS.
+    -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
+    integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+  <script src="https://use.fontawesome.com/143dc7bf6f.js"></script>
+
+  <!--
+      JavaScript Cookie: a simple, lightweight JavaScript API for handling
+      browser cookies.
+    -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.min.js"></script>
+
+  <!--
+      toastr: simple javascript toast notifications
+      [http://www.toastrjs.com]
+
+      toastr is a Javascript library for non-blocking notifications. jQuery
+      is required. The goal is to create a simple core library that can be
+      customized and extended.
+     -->
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <link href="{% static 'css/xebus-home.0.0.1.css' %}" rel="stylesheet" />
+  <script src="{% static 'js/xebus-home.0.0.1.js' %}"></script>
+
+  <link href="{% static 'css/intlTelInput.css' %}" rel="stylesheet" />
+  <script src="{% static 'js/intlTelInput.js' %}"></script>
+
+  <link href="{% static 'css/component-custom-switch.css' %}" rel="stylesheet">
+
+  <!--
+      Parse the JSON data returned by the Web server.
+    -->
+  <script type="text/javascript">
+    var gPagePayload = jQuery.parseJSON('{{ context | escapejs | safe }}'); // Don't use double-quote, but single-quote
+  </script>
+
+  <script src="//cdnjs.majormode.com/ajax/libs/perseus-enum.1.0.0.js"></script>
+  <script src="//cdnjs.majormode.com/ajax/libs/perseus-common.1.0.0.js"></script>
+  <script src="//cdnjs.majormode.com/ajax/libs/perseus-label.1.0.0.js"></script>
+  <script src="//cdnjs.majormode.com/ajax/libs/perseus-geolocation.1.0.0.js"></script>
+
+  <script src="//cdnjs.majormode.com/ajax/libs/debounce-utils.1.0.0.js"></script>
+  <script src="//cdnjs.majormode.com/ajax/libs/perseus-event-target.1.0.0.js"></script>
+  <script src="//cdnjs.majormode.com/ajax/libs/account-service.1.2.2.js"></script>
+  <script src="//cdnjs.majormode.com/ajax/libs/area-service.1.1.2.js"></script>
+  <script src="{% static 'js//xebus-service.1.0.0.js' %}"></script>
+  <style type="text/css">
+
+	.loading_arrow {
+    width: 32px;
+    margin-top: 13px;
+    margin-left: 42%;
+    -webkit-animation: rotation .75s infinite linear;
+    -moz-animation: rotation .75s infinite linear;
+    -o-animation: rotation .75s infinite linear;
+    animation: rotation .75s infinite linear;
+}
+	body {
+	    background-color:#000;
+	}
+	@-webkit-keyframes rotation {
+	    from {
+	        -webkit-transform: rotate(0deg);
+	    }
+	    to {
+	        -webkit-transform: rotate(359deg);
+	    }
+	}
+	@-moz-keyframes rotation {
+	    from {
+	        -moz-transform: rotate(0deg);
+	    }
+	    to {
+	        -moz-transform: rotate(359deg);
+	    }
+	}
+	@-o-keyframes rotation {
+	    from {
+	        -o-transform: rotate(0deg);
+	    }
+	    to {
+	        -o-transform: rotate(359deg);
+	    }
+	}
+	@keyframes rotation {
+	    from {
+	        transform: rotate(0deg);
+	    }
+	    to {
+	        transform: rotate(359deg);
+	    }
+	}
+
+</style>
+</head>
+
+<body>
+  {% csrf_token %}
+  <header class="header__site">
+    <div class="header__content">
+      <div class="header__logo">
+        <span class="dog-wrapper">
+          <img class="logo left" src="{% static 'img/logo_xebus_64x64.png' %}" alt="School Bus" />
+        </span>
+      </div>
+
+      <div>
+        <!-- Dropdown profile menu of user -->
+        <div class="dropdown">
+          <div class="dropdown-toggle" data-toggle="dropdown">
+            <img src="#" alt="" id="user-photo">
+          </div>
+          <ul class="dropdown-menu">
+            <li>
+              <div class="navbar-login dropdown-content">
+                <div class="row">
+                  <div class="col-lg-3 col-3 avatar-container">
+                    <img src="#" alt="" id="avatar-zoom" class="avatar">
+                    <input type="file" id="image-source" accept="image/*" hidden>
+                    <div class="overlay-container">
+                      <div class="overlay">
+                        <i class="far fa-image"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-9 info-container">
+                    <input type="text" name="fullname" id="fullname" placeholder="Your New Name" autocomplete="off">
+                    <div class="loader fullname-load"></div>
+                    <i class="fas fa-exclamation-triangle text-danger fullname-check fullname-error"></i>
+                    <i class="fa fa-check text-success fullname-check fullname-success"></i>
+                    <span id="email-info"></span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <ul class="list-group list-group-flush kidList__container">
+                <li class="kid__container flex">
+                  <h4>My Kids</h4>
+                  <img src="{% static 'ico/add_icon.png' %}" alt="" class="add-kid-icon">
+                </li>
+              </ul>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <div class="navbar-login navbar-login-session">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <button id="btn-out" class="btn btn-danger btn-block" type="button" name="button">Log Out</button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" name="button" id="login" class="btn btn-light right">Log In</button>
+    </div>
+  </header>
+
+  <!--
+      Modal login form to let the user enters his credential and log in to
+      the platform.
+    -->
+  <div class="modal fade" id="loginModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <input type="text" name="email" class="form-control" id="email-login" required autocomplete="off">
+              <label id="email-login-label" for="email">Email address</label>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" id="password" required autocomplete="off">
+              <label id="password-login-label" for="password">Password</label>
+              <i id="hide" class="far fa-eye-slash form-icon"></i>
+              <i id="show" style="display:none" class="far fa-eye form-icon"></i>
+              <a href="#" id="forget">Forget password?</a>
+            </div>
+            <span id="login-error-message">Invalid email or password</span>
+            <button id="btn-login" type="button" class="btn btn-primary btn-block">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal child registration form to let the user register a new child -->
+  <div class="modal fade" id="kidRegistrationModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header flex">
+          <button class="btn-arrow prev" type="button" disabled>
+            <!-- <img alt="" class="arrow-icon"> -->
+          </button>
+          <h5 class="modal-title" id="form-kid-title"></h5>
+          <button id="next" class="btn-arrow next" type="button">
+            <!-- <img alt="" class="arrow-icon"> -->
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="kid-form">
+            <!-- fieldsets -->
+            <fieldset class="frame-1">
+              <div class="avatar-container kid-avatar-container left">
+                <img src="" alt="" id="kid-avatar" class="avatar">
+                <input type="file" id="kid-avatar-source" class="kid-form-check" accept="image/*" hidden>
+                <!-- <div class="overlay-container">
+                    <div class="overlay">
+                      <i class="far fa-image"></i>
+                    </div>
+                  </div> -->
+              </div>
+              <div class="kid-info-container left">
+                <div class="form-group">
+                  <input type="text" name="kid-full-name" class="form-control kid-form-check" id="kid-full-name"
+                    required autocomp-lete="off" placeholder="Enter the fullname of your kid">
+                  <label id="kid-name-label" for="kid-full-name">Fullname</label>
+                  <button id="btn-remove-kid" class="btn-remove-item" type="button"></button>
+                  <div class="kid-suggest-container kid-form-suggest">
+                    
+                  </div>
+                  <span class="kid-form-error">You can't leave this empty.</span>
+                </div>
+                <div class="form-group">
+                  <span for="kid-birthday">Date of birth</span>
+                  <div class="row date-container" id="date-container">
+                    <input type="text" pattern="\d*" maxlength="1" class="date" id="date-1" style="margin-left: 0;">
+                    <input type="text" pattern="\d*" maxlength="1" class="date" id="date-2">
+                    <i class="fas fa-minus date-icon"></i>
+                    <input type="text" pattern="\d*" maxlength="1" class="date" id="date-3">
+                    <input type="text" pattern="\d*" maxlength="1" class="date" id="date-4">
+                    <i class="fas fa-minus date-icon"></i>
+                    <input type="text" pattern="\d*" maxlength="1" class="date" id="date-5">
+                    <input type="text" pattern="\d*" maxlength="1" class="date" id="date-6">
+                    <input type="text" pattern="\d*" maxlength="1" class="date" id="date-7">
+                    <input type="text" pattern="\d*" maxlength="1" class="date" id="date-8">
+                  </div>
+                  <span class="kid-form-error date-error">You can't leave this empty.</span>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="frame-2 flex flex-column">
+              <div class="form-group">
+                <textarea name="kid-address" id="kid-address" required
+                  placeholder="Enter the complete address of your resisental address"></textarea>
+                <label id="kid-name-label" for="kid-address">Residential Address</label>
+                <span class="kid-form-error address-error">You can't leave this empty.</span>
+              </div>
+              <p class="map-instruction">Drag and zoom the map and position the marker on the exact spot where you home
+                is located:</p>
+              <div id="map-address-container">
+
+              </div>
+            </fieldset>
+            <fieldset class="frame-3 flex flex-column">
+              <div class="form-group">
+                <input type="text" name="kid-school" class="form-control kid-form-check" id="kid-school" required
+                  autocomplete="off" placeholder="Enter a name and select the corresponding school">
+                <label id="kid-name-label" for="kid-school">School</label>
+                <button id="btn-remove-school" class="btn-remove-item" type="button"></button>
+                <div class="school-suggest-container kid-form-suggest">
+                    
+                </div>
+                <span class="kid-form-error">You can't leave this empty.</span>
+              </div>
+              <div class="form-group">
+                <input type="text" name="kid-grade" class="form-control kid-form-check" id="kid-grade" required
+                  autocomplete="off" placeholder="Select a grade of your kid">
+                <label id="kid-name-label" for="kid-grade">Grade</label>
+                <ul class="grade-suggest-container kid-form-suggest">
+                    
+                </ul>
+                <span class="kid-form-error">You can't leave this empty.</span>
+              </div>
+              <div class="flex switcher-container">
+                <span>Do you allow your kid to leave the school alone?</span>
+                <div class="custom-switch custom-switch-xs pl-0">
+                  <input class="custom-switch-input" id="school-leave-allow" type="checkbox">
+                  <label class="custom-switch-btn" for="school-leave-allow"></label>
+                </div>
+              </div>
+              <div class="flex switcher-container">
+                <span>Do you allow your kid to leave the school bus alone?</span>
+                <div class="custom-switch custom-switch-xs pl-0">
+                  <input class="custom-switch-input" id="school-bus-leave-allow" type="checkbox">
+                  <label class="custom-switch-btn" for="school-bus-leave-allow"></label>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="frame-4 flex flex-column">
+              <div class="guardian-container flex">
+                <div class="form-group col-8">
+                  <input id="guardian-name" type="text" name="guardian-name" class="form-control" autocomplete="off"
+                    required placeholder="Enter the fullname of the person">
+                  <label id="guardian-name-label" class="guardian-name-label" for="guardian-name">Fullname</label>
+                  <button id="btn-remove-guard" class="btn-remove-item" type="button"></button>
+                  <div class="guard-suggest-container kid-form-suggest">
+                    
+                  </div>
+                  <span class="kid-form-error guard-name-error">You can't leave this empty.</span>
+                </div>
+                <div class="form-group col-4">
+                  <select class="form-control" id="guardian-role">
+                    <option value="" selected>Select a role</option>
+                    <option value="parent">Parent</option>
+                    <option value="babysister">Childminder</option>
+                  </select>
+                  <label id="guardian-name-label" class="guardian-role-label" for="guardian-role">Role</label>
+                  <span class="kid-form-error guard-role-error">You can't leave this empty.</span>
+                </div>
+                <div class="form-group col-12">
+                  <div class="form-icon email-icon"></div>
+                  <input type="text" id="guardian-email" name="guardian-email" class="form-control"
+                    placeholder="Enter the email address of this person" autocomplete="off" required>
+                  <span class="kid-form-error guard-email-error">You can't leave this empty.</span>
+                </div>
+                <div class="form-group col-12">
+                  <div class="form-icon phone-icon"></div>
+                  <input type="tel" name="guardian-phone" id="guardian-phone" class="form-control"
+                    placeholder="Enter the mobile phone number of this person" autocomplete="off" required>
+                  <span class="kid-form-error guard-phone-error">You can't leave this empty.</span>
+                </div>
+                <i class="far fa-times-circle remove-icon" onclick="removeGuardian(this)"></i>
+              </div>
+              <button class="btn btn-primary btn-add-guardian" id="btn-add-guardian" type="button">Add Guardian</button>
+            </fieldset>
+            <button type="button" class="next action-button btn btn-primary">Next</button>
+            <div class="dots-container col-12 flex">
+              <div class="dot dot-1 selected"></div>
+              <div class="dot dot-2"></div>
+              <div class="dot dot-3"></div>
+              <div class="dot dot-4"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="map__container">
+  </div>
+
+  <!-- From Registration -->
+  <div class="form__container">
+    <form action="/registration" class="form-inline" id="from-join" method="post">
+      <span class="form-join-icon email-icon"></span>
+      <input type="email" name="email-address" class="form-control" id="email" placeholder="Your Email Address"
+        autocomplete="off">
+      <div class="loader email-load"></div>
+      <i class="fas fa-exclamation-triangle text-danger email-check email-error"></i>
+      <i class="fa fa-check text-success email-check email-success"></i>
+
+      <span class="form-join-icon" id="location-icon"></span>
+      <input type="text" class="form-control" id="location" placeholder="In which city does your kid live?"
+        autocomplete="off">
+      <div class="loader city-load"></div>
+      <input type="hidden" name="area-id" id="area-id">
+      <div class="placeList__container"></div>
+      <div class="selected-place__container">
+        <div class="selected-place"></div>
+        <i class="fa fa-times close-icon" id="close-icon-city"></i>
+      </div>
+
+      <span class="form-join-icon school-icon"></span>
+      <input type="text" name="email-address" class="form-control" id="school"
+        placeholder="Which school does your kid study?" disabled autocomplete="off">
+      <div class="loader school-load"></div>
+      <input type="hidden" name="school-id" id="school-id">
+      <div class="schoolList__container"></div>
+      <div class="selected-school__container">
+        <div class="selected-school"></div>
+        <i class="fa fa-times close-icon" id="close-icon-school"></i>
+      </div>
+
+      <input type="hidden" name="ll" id="ll">
+      <button type="submit" href="account_registration.html" class="btn btn-danger" >JOIN</button>
+    </form>
+  </div>
+
+  <footer class="footer__site">
+      <div id="primaryContainer">
+      <a class="btn_join_small" href="#" style="float: left;">
+          <img class="loading_arrow" src="{% static 'img/ic_location_compass.svg' %}" />
+      </a>
+  </div>
+  </footer>
+
+  <div class="place__container left">
+    <nav class="form-join-icon city-icon"></nav>
+    <div class="city-info__container">
+      <div class="city-name" id="name">Ho Chi Minh</div>
+      <div class="city__parent-name" id="name__parent">VietNam</div>
+    </div>
+  </div>
+
+  <div class="school__container left">
+    <nav class="form-join-icon school-icon"></nav>
+    <div class="city-info__container">
+      <div class="city-name" id="name">Ho Chi Minh</div>
+      <div class="city__parent-name" id="name__parent">VietNam</div>
+    </div>
+  </div>
+
+  <li class="kid__container flex">
+    <img src="#" alt="" id="kid-photo">
+    <p id="kid-name">Kid Name</p>
+    <i class="fas fa-trash-alt remove-kid-icon"></i>
+  </li>
+
+  <div class="kid-item flex">
+      <img src="" alt="" class="kid-item-photo">
+      <span class="kid-item-name">rkglxjkdvn</span>
+  </div>
+
+  <!--
+      Google Maps JavaScript API: customize maps with your own content and
+      imagery. Robust feature support.
+    -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyANQixZzt6a_p30YpJ9WY4rkg_svc3IbMU&callback=initializeMap">
+    </script>
+  <script type="text/javascript">
+    var date_input = $('input[name="kid-birthday"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    date_input.datepicker({
+      format: 'dd-mm-yyyy',
+      container: container,
+      todayHighlight: true,
+      autoclose: true,
+      orientation: 'auto',
+    })
+  </script>
+  <script>
+    var input = document.querySelector("#guardian-phone");
+    var iti;
+    var countryCode = 'fr';
+    var utilsUrl = "{% static 'js/utils.js' %}";
+    $.ajax('//ip-api.com/json')
+      .then(
+        function success(response) {
+          countryCode = response.countryCode;
+          initIntlTelInput();
+        },
+        function fail() {
+          initIntlTelInput();
+        }
+      );
+  </script>
+</body>
+
+</html>
