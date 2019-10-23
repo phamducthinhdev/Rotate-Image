@@ -125,6 +125,83 @@
   <script src="//cdnjs.majormode.com/ajax/libs/account-service.1.2.2.js"></script>
   <script src="//cdnjs.majormode.com/ajax/libs/area-service.1.1.2.js"></script>
   <script src="{% static 'js//xebus-service.1.0.0.js' %}"></script>
+  <style>
+    @-webkit-keyframes rotating_animation {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes rotating_compass_animation {
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes rotating_compass_animation {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating_animation {
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes animate_rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@-moz-keyframes animate_rotation {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+  }
+}
+
+@keyframes animate_rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.animate--rotate{
+  -webkit-animation: rotating_animation 3s infinite linear;
+  animation: rotating_animation 3s infinite linear;
+}
+
+.check_location .btn_check_location{
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 101;
+  width: 30px;
+  height: 30px;
+  background: url("/static/img/ic_location_compass.svg") no-repeat center center;
+  cursor: pointer;
+  outline: none;
+  margin-top: -15px;
+}
+  </style>
 </head>
 
 <body>
