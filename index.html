@@ -1,61 +1,29 @@
 <!DOCTYPE html>
 <html>
-<style type="text/css">
-	
-	.loading_arrow {
-    width: 32px;
-    margin-top: 13px;
-    margin-left: 42%;
-    -webkit-animation: rotation .75s infinite linear;
-    -moz-animation: rotation .75s infinite linear;
-    -o-animation: rotation .75s infinite linear;
-    animation: rotation .75s infinite linear;
-}
-	body {
-	    background-color:#000;
-	}
-	@-webkit-keyframes rotation {
-	    from {
-	        -webkit-transform: rotate(0deg);
-	    }
-	    to {
-	        -webkit-transform: rotate(359deg);
-	    }
-	}
-	@-moz-keyframes rotation {
-	    from {
-	        -moz-transform: rotate(0deg);
-	    }
-	    to {
-	        -moz-transform: rotate(359deg);
-	    }
-	}
-	@-o-keyframes rotation {
-	    from {
-	        -o-transform: rotate(0deg);
-	    }
-	    to {
-	        -o-transform: rotate(359deg);
-	    }
-	}
-	@keyframes rotation {
-	    from {
-	        transform: rotate(0deg);
-	    }
-	    to {
-	        transform: rotate(359deg);
-	    }
-	}
+<head>
+	<link rel="stylesheet" type="text/css" href="css/home.css">
 
-</style>
+</head>
 <body>
 
-<div id="primaryContainer"> 
-	<a class="btn_join_small" href="#" style="float: left;">
-      	<img class="loading_arrow" src="http://royalidea.com/happyname/img/loading.svg" />
-    </a>
+<button onclick="getLocation()" type="button" class="check_location animate--rotate" style="width: 26px;height: 26px;background-image: url(img/ic_location_compass.svg);"></button>
 
-</div>
 
 </body>
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
 </html> 
